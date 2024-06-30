@@ -1,10 +1,16 @@
 .main {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 6rem;
+  /* justify-content: space-between; */
+  /* align-items: center; */
+
+  /* padding: 8rem; */
+  padding-top: 9rem;
+  padding-left: 5rem;
   min-height: 100vh;
+  background-color: transparent;
+  color: white;
+  z-index: 2;
 }
 
 .description {
@@ -78,7 +84,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  padding: 4rem 0;
+  /* padding: 4rem 0; */
 }
 
 .center::before {
@@ -106,7 +112,13 @@
 }
 
 .logo {
-  position: relative;
+  /* position: relative; */
+  height: 10vh;
+  width: 30vw;
+}
+.logoContainer {
+  display: flex;
+  align-items: center;
 }
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
@@ -201,6 +213,9 @@
     );
     z-index: 1;
   }
+  .logo {
+    width: 25vw; /* Adjust width for smaller screens */
+  }
 }
 
 /* Tablet and Smaller Desktop */
@@ -215,9 +230,9 @@
     filter: invert(1);
   }
 
-  .logo {
-    filter: invert(1) drop-shadow(0 0 0.3rem #ffffff70);
-  }
+  /* .logo { */
+  /* filter: invert(1) drop-shadow(0 0 0.3rem #ffffff70); */
+  /* } */
 }
 
 @keyframes rotate {

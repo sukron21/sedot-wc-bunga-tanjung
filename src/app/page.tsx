@@ -14,12 +14,13 @@ import {
   industry,
 } from "../../public/asset";
 import Navbar from "@/component/Navbar/navbar"; // Pastikan path impor benar sesuai dengan struktur
-import { Button, Card, Col, Row } from "antd";
+import { Button, Card, Col, Row, Spin } from "antd";
 import { ArrowRightOutlined } from "@ant-design/icons";
 
 const Home: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   // Function to handle screen resize
   const handleResize = () => {
@@ -37,395 +38,437 @@ const Home: React.FC = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div>
-      <div
-        className="container-fluid"
-        style={{
-          backgroundColor: "white",
-          height: isMobile ? "40vh" : isTablet ? "55vh" : "100vh",
-          width: "100vw",
-          overflow: "hidden", // Memastikan overflow hidden untuk menghindari keluar dari gambar latar belakang
-          position: "relative", // Kembali gunakan posisi relatif
-          color: "black",
-        }}
-      >
-        {/* Background Image */}
+    <>
+      {isLoading ? (
         <div
           style={{
-            zIndex: 0,
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
+            position: "fixed",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            zIndex: 999,
+            color: "#fff",
+            // backgroundColor: "rgba(0, 0, 0, 0.5)",
+            padding: "20px",
           }}
         >
-          <Image
-            src={bgHeader.src}
-            layout="fill"
-            objectFit="cover"
-            alt="Background Image"
-          />
-
-          {/* Background Overlay */}
-          <div
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-              background:
-                "linear-gradient(90deg, rgba(37, 60, 120, 0.8) 44.36%, rgba(0, 0, 0, 0.2) 100%)",
-              opacity: 0.7,
-              zIndex: 1, // Ensure this is behind the Navbar
-            }}
-          />
+          <Spin size="large" />
         </div>
-        {/* Navbar */}
-        <Navbar />
-        {/* Main Content */}
-        <main
-          style={{
-            zIndex: 2,
-            position: "relative",
-            display: "flex",
-            flexDirection: "column",
-            paddingTop: isMobile ? "10%" : isTablet ? "15%" : "10%",
-            paddingLeft: "8%",
-            minHeight: "100vh",
-            backgroundColor: "transparent",
-            color: "white",
-          }}
-        >
-          <p style={{ color: "#FFFFFFBF", fontSize: 12, paddingBottom: "5px" }}>
-            Bunga Tanjung Sedot Wc
-          </p>
-          <h1 style={{ fontSize: isMobile ? 20 : isTablet ? 30 : 44 }}>
-            CARA MENGATASI WC
-          </h1>
-          <h1
+      ) : (
+        <div>
+          <div
+            className="container-fluid"
             style={{
-              fontSize: isMobile ? 20 : isTablet ? 30 : 44,
-              paddingBottom: "5px",
+              backgroundColor: "white",
+              height: isMobile ? "40vh" : isTablet ? "55vh" : "100vh",
+              width: "100vw",
+              overflow: "hidden", // Memastikan overflow hidden untuk menghindari keluar dari gambar latar belakang
+              position: "relative", // Kembali gunakan posisi relatif
+              color: "black",
             }}
           >
-            MAMPET TANPA RIBET
-          </h1>
-          <p style={{ color: "#FFFFFFBF", fontSize: 12 }}>
-            Kami memiliki tim terlatih dan berpengalaman yang
-          </p>
-          <p style={{ color: "#FFFFFFBF", fontSize: 12 }}>
-            mampu menangani berbagai masalah sanitasi
-          </p>
-          <p style={{ color: "#FFFFFFBF", fontSize: 12 }}>
-            dengan keahlian profesionalisme
-          </p>
-        </main>
-      </div>
-
-      {/* Main Content Section */}
-      <main style={{ color: "black" }}>
-        <Row
-          style={{ paddingLeft: "10%", paddingRight: "10%", paddingTop: "5%" }}
-        >
-          <Col xs={24} sm={12}>
-            <Card
-              hoverable
+            {/* Background Image */}
+            <div
               style={{
-                width: "80%",
-                marginBottom: "20px", // Memberikan ruang antar card di perangkat mobile
+                zIndex: 0,
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
               }}
-              cover={
-                <img
-                  alt="Perbaikan WC mampet dengan layanan cepat di Tangerang"
-                  src={wcMampet.src}
-                />
-              }
             >
-              <h4>WC Mampet</h4>
-              <p style={{ color: "#6E6E6E", fontSize: 12 }}>
-                Temukan solusi terbaik untuk masalah WC mampet di area Tangerang
-                dengan layanan kami yang cepat dan berkualitas. Kami menyediakan
-                penanganan profesional menggunakan teknologi terbaru untuk
-                memastikan WC Anda kembali berfungsi dalam waktu singkat. Jangan
-                biarkan masalah WC mampet mengganggu kenyamanan Anda - hubungi
-                kami sekarang untuk layanan terbaik!
-              </p>
-            </Card>
-          </Col>
-          <Col xs={24} sm={12}>
-            <Card
-              hoverable
-              style={{
-                width: "80%",
-              }}
-              cover={
-                <img
-                  alt="Perbaikan WC mampet dengan layanan cepat di Tangerang"
-                  src={mobil.src}
-                />
-              }
-            >
-              <h5
-                style={{
-                  color: "#253C78",
-                  paddingTop: "12px",
-                  paddingBottom: "12px",
-                }}
-              >
-                WHO WE ARE
-              </h5>
-              <h2 style={{ paddingBottom: "12px" }}>
-                Sedot WC Bunga Tanjung: Layanan Profesional di Tangerang
-              </h2>
-              <Button
-                style={{
-                  backgroundColor: "#2B59C3",
-                  color: "white",
-                  paddingBottom: "12px",
-                  paddingTop: "12px",
-                }}
-              >
-                Learn More <ArrowRightOutlined />
-              </Button>
-            </Card>
-          </Col>
-        </Row>
+              <Image
+                src={bgHeader.src}
+                layout="fill"
+                objectFit="cover"
+                alt="Background Image"
+              />
 
-        {/* Featured Service Section */}
-        <Row style={{ backgroundColor: "#F9F9F9", padding: "20px" }}>
-          <Col
-            xs={24}
-            sm={12}
-            style={{ display: "flex", alignItems: "center" }}
-          >
-            <Card
+              {/* Background Overlay */}
+              <div
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                  background:
+                    "linear-gradient(90deg, rgba(37, 60, 120, 0.8) 44.36%, rgba(0, 0, 0, 0.2) 100%)",
+                  opacity: 0.7,
+                  zIndex: 1, // Ensure this is behind the Navbar
+                }}
+              />
+            </div>
+            {/* Navbar */}
+            <Navbar />
+            {/* Main Content */}
+            <main
               style={{
+                zIndex: 2,
+                position: "relative",
+                display: "flex",
+                flexDirection: "column",
+                paddingTop: isMobile ? "10%" : isTablet ? "15%" : "10%",
+                paddingLeft: "8%",
+                minHeight: "100vh",
                 backgroundColor: "transparent",
-                textAlign: "left",
-                maxWidth: "80%",
-                padding: "20px",
+                color: "white",
               }}
             >
-              <h5
+              <p
                 style={{
-                  color: "#253C78",
-                  paddingTop: "12px",
-                  paddingBottom: "12px",
+                  color: "#FFFFFFBF",
+                  fontSize: 12,
+                  paddingBottom: "5px",
                 }}
               >
-                FEATURED SERVICE
-              </h5>
-              <h2 style={{ marginBottom: "12px" }}>
-                Lorem Ipsum Dolor Sit Amet, Consectur
-              </h2>
-              <p style={{ marginBottom: "0" }}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Bunga Tanjung Sedot Wc
               </p>
-            </Card>
-          </Col>
-          <Col
-            xs={24}
-            sm={12}
-            style={{ display: "flex", alignItems: "center" }}
-          >
-            <Row gutter={[16, 16]} style={{ maxWidth: "80%" }}>
-              <Col style={{ paddingTop: "20px" }} span={12}>
-                <img
-                  alt="Perbaikan WC mampet dengan layanan cepat di Tangerang"
-                  src={mobil2.src}
+              <h1 style={{ fontSize: isMobile ? 20 : isTablet ? 30 : 44 }}>
+                CARA MENGATASI WC
+              </h1>
+              <h1
+                style={{
+                  fontSize: isMobile ? 20 : isTablet ? 30 : 44,
+                  paddingBottom: "5px",
+                }}
+              >
+                MAMPET TANPA RIBET
+              </h1>
+              <p style={{ color: "#FFFFFFBF", fontSize: 12 }}>
+                Kami memiliki tim terlatih dan berpengalaman yang
+              </p>
+              <p style={{ color: "#FFFFFFBF", fontSize: 12 }}>
+                mampu menangani berbagai masalah sanitasi
+              </p>
+              <p style={{ color: "#FFFFFFBF", fontSize: 12 }}>
+                dengan keahlian profesionalisme
+              </p>
+            </main>
+          </div>
+
+          {/* Main Content Section */}
+          <main style={{ color: "black" }}>
+            <Row
+              style={{
+                paddingLeft: "10%",
+                paddingRight: "10%",
+                paddingTop: "5%",
+              }}
+            >
+              <Col xs={24} sm={12}>
+                <Card
+                  hoverable
                   style={{
-                    width: "100%",
-                    maxWidth: "200px",
-                    display: "block",
-                    margin: "auto",
+                    width: "80%",
+                    marginBottom: "20px", // Memberikan ruang antar card di perangkat mobile
                   }}
-                />
+                  cover={
+                    <img
+                      alt="Perbaikan WC mampet dengan layanan cepat di Tangerang"
+                      src={wcMampet.src}
+                    />
+                  }
+                >
+                  <h4>WC Mampet</h4>
+                  <p style={{ color: "#6E6E6E", fontSize: 12 }}>
+                    Temukan solusi terbaik untuk masalah WC mampet di area
+                    Tangerang dengan layanan kami yang cepat dan berkualitas.
+                    Kami menyediakan penanganan profesional menggunakan
+                    teknologi terbaru untuk memastikan WC Anda kembali berfungsi
+                    dalam waktu singkat. Jangan biarkan masalah WC mampet
+                    mengganggu kenyamanan Anda - hubungi kami sekarang untuk
+                    layanan terbaik!
+                  </p>
+                </Card>
               </Col>
-              <Col span={12}>
-                <img
-                  alt="Perbaikan WC mampet dengan layanan cepat di Tangerang"
-                  src={tinja.src}
+              <Col xs={24} sm={12}>
+                <Card
+                  hoverable
                   style={{
-                    width: "100%",
-                    maxWidth: "200px",
-                    display: "block",
-                    margin: "auto",
+                    width: "80%",
                   }}
-                />
+                  cover={
+                    <img
+                      alt="Perbaikan WC mampet dengan layanan cepat di Tangerang"
+                      src={mobil.src}
+                    />
+                  }
+                >
+                  <h5
+                    style={{
+                      color: "#253C78",
+                      paddingTop: "12px",
+                      paddingBottom: "12px",
+                    }}
+                  >
+                    WHO WE ARE
+                  </h5>
+                  <h2 style={{ paddingBottom: "12px" }}>
+                    Sedot WC Bunga Tanjung: Layanan Profesional di Tangerang
+                  </h2>
+                  <Button
+                    style={{
+                      backgroundColor: "#2B59C3",
+                      color: "white",
+                      paddingBottom: "12px",
+                      paddingTop: "12px",
+                    }}
+                  >
+                    Learn More <ArrowRightOutlined />
+                  </Button>
+                </Card>
               </Col>
             </Row>
-          </Col>
-        </Row>
 
-        {/* What We Do Section */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            minHeight: "60vh",
-          }}
-        >
-          <h5
-            style={{
-              color: "#253C78",
-              paddingTop: "12px",
-              paddingBottom: "12px",
-              textAlign: "center", // Menyimpan teks di tengah horizontal
-            }}
-          >
-            WHAT WE DO
-          </h5>
-          <h2 style={{ marginBottom: "12px", textAlign: "center" }}>
-            OUR SERVICE
-          </h2>
-          <Row justify="center">
-            <Col xs={12} sm={6}>
-              <Card
-                style={{
-                  justifyContent: "center",
-                  display: "flex",
-                  flexDirection: "column",
-                  textAlign: "center",
-                  padding: "20px",
-                  alignItems: "center",
-                }}
+            {/* Featured Service Section */}
+            <Row style={{ backgroundColor: "#F9F9F9", padding: "20px" }}>
+              <Col
+                xs={24}
+                sm={12}
+                style={{ display: "flex", alignItems: "center" }}
               >
-                <img
-                  alt="Perbaikan WC mampet dengan layanan cepat di Tangerang"
-                  src={building.src}
-                />
-                <h4>Sedot Wc Kantor</h4>
-              </Card>
-            </Col>
-            <Col
-              xs={12}
-              sm={6}
-              style={{ paddingLeft: "12px", paddingRight: "12px" }}
+                <Card
+                  style={{
+                    backgroundColor: "transparent",
+                    textAlign: "left",
+                    maxWidth: "80%",
+                    padding: "20px",
+                  }}
+                >
+                  <h5
+                    style={{
+                      color: "#253C78",
+                      paddingTop: "12px",
+                      paddingBottom: "12px",
+                    }}
+                  >
+                    FEATURED SERVICE
+                  </h5>
+                  <h2 style={{ marginBottom: "12px" }}>
+                    Lorem Ipsum Dolor Sit Amet, Consectur
+                  </h2>
+                  <p style={{ marginBottom: "0" }}>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua.
+                  </p>
+                </Card>
+              </Col>
+              <Col
+                xs={24}
+                sm={12}
+                style={{ display: "flex", alignItems: "center" }}
+              >
+                <Row gutter={[16, 16]} style={{ maxWidth: "80%" }}>
+                  <Col style={{ paddingTop: "20px" }} span={12}>
+                    <img
+                      alt="Perbaikan WC mampet dengan layanan cepat di Tangerang"
+                      src={mobil2.src}
+                      style={{
+                        width: "100%",
+                        maxWidth: "200px",
+                        display: "block",
+                        margin: "auto",
+                      }}
+                    />
+                  </Col>
+                  <Col span={12}>
+                    <img
+                      alt="Perbaikan WC mampet dengan layanan cepat di Tangerang"
+                      src={tinja.src}
+                      style={{
+                        width: "100%",
+                        maxWidth: "200px",
+                        display: "block",
+                        margin: "auto",
+                      }}
+                    />
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
+
+            {/* What We Do Section */}
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                minHeight: "60vh",
+              }}
             >
-              <Card
+              <h5
                 style={{
-                  justifyContent: "center",
-                  display: "flex",
-                  flexDirection: "column",
-                  textAlign: "center",
-                  padding: "20px",
-                  alignItems: "center",
-                  backgroundColor: "#253C78",
-                  color: "white",
+                  color: "#253C78",
+                  paddingTop: "12px",
+                  paddingBottom: "12px",
+                  textAlign: "center", // Menyimpan teks di tengah horizontal
                 }}
               >
-                <img
-                  alt="Perbaikan WC mampet dengan layanan cepat di Tangerang"
-                  src={house.src}
-                />
-                <h4>Sedot Wc Rumah</h4>
-              </Card>
-            </Col>
-            <Col xs={12} sm={6} style={{ paddingRight: "12px" }}>
-              <Card
-                style={{
-                  justifyContent: "center",
-                  display: "flex",
-                  flexDirection: "column",
-                  textAlign: "center",
-                  padding: "20px",
-                  alignItems: "center",
-                }}
-              >
-                <img
-                  alt="Perbaikan WC mampet dengan layanan cepat di Tangerang"
-                  src={setting.src}
-                />
-                <h4>Maintenance Toliet</h4>
-              </Card>
-            </Col>
-            <Col xs={12} sm={6}>
-              <Card
-                style={{
-                  justifyContent: "center",
-                  display: "flex",
-                  flexDirection: "column",
-                  textAlign: "center",
-                  padding: "20px",
-                  alignItems: "center",
-                }}
-              >
-                <img
-                  alt="Perbaikan WC mampet dengan layanan cepat di Tangerang"
-                  src={industry.src}
-                />
-                <h4>Pemasangan Toilet</h4>
-              </Card>
-            </Col>
-          </Row>
+                WHAT WE DO
+              </h5>
+              <h2 style={{ marginBottom: "12px", textAlign: "center" }}>
+                OUR SERVICE
+              </h2>
+              <Row justify="center">
+                <Col xs={12} sm={6}>
+                  <Card
+                    style={{
+                      justifyContent: "center",
+                      display: "flex",
+                      flexDirection: "column",
+                      textAlign: "center",
+                      padding: "20px",
+                      alignItems: "center",
+                    }}
+                  >
+                    <img
+                      alt="Perbaikan WC mampet dengan layanan cepat di Tangerang"
+                      src={building.src}
+                    />
+                    <h4>Sedot Wc Kantor</h4>
+                  </Card>
+                </Col>
+                <Col
+                  xs={12}
+                  sm={6}
+                  style={{ paddingLeft: "12px", paddingRight: "12px" }}
+                >
+                  <Card
+                    style={{
+                      justifyContent: "center",
+                      display: "flex",
+                      flexDirection: "column",
+                      textAlign: "center",
+                      padding: "20px",
+                      alignItems: "center",
+                      backgroundColor: "#253C78",
+                      color: "white",
+                    }}
+                  >
+                    <img
+                      alt="Perbaikan WC mampet dengan layanan cepat di Tangerang"
+                      src={house.src}
+                    />
+                    <h4>Sedot Wc Rumah</h4>
+                  </Card>
+                </Col>
+                <Col xs={12} sm={6} style={{ paddingRight: "12px" }}>
+                  <Card
+                    style={{
+                      justifyContent: "center",
+                      display: "flex",
+                      flexDirection: "column",
+                      textAlign: "center",
+                      padding: "20px",
+                      alignItems: "center",
+                    }}
+                  >
+                    <img
+                      alt="Perbaikan WC mampet dengan layanan cepat di Tangerang"
+                      src={setting.src}
+                    />
+                    <h4>Maintenance Toliet</h4>
+                  </Card>
+                </Col>
+                <Col xs={12} sm={6}>
+                  <Card
+                    style={{
+                      justifyContent: "center",
+                      display: "flex",
+                      flexDirection: "column",
+                      textAlign: "center",
+                      padding: "20px",
+                      alignItems: "center",
+                    }}
+                  >
+                    <img
+                      alt="Perbaikan WC mampet dengan layanan cepat di Tangerang"
+                      src={industry.src}
+                    />
+                    <h4>Pemasangan Toilet</h4>
+                  </Card>
+                </Col>
+              </Row>
+            </div>
+
+            {/* Footer Section */}
+            <footer
+              style={{
+                backgroundColor: "#253C78",
+                color: "white",
+                padding: "20px",
+                textAlign: "center",
+              }}
+            >
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <p style={{ margin: "0", paddingRight: "10px" }}>Use Client</p>
+                {/* Add more relevant content for SEO */}
+                <p style={{ margin: "0", paddingRight: "10px" }}>
+                  Email: info@bungatanjung.com
+                </p>
+                <p style={{ margin: "0" }}>Phone: +62 822 9570 0707</p>
+              </div>
+              <div style={{ marginTop: "10px" }}>
+                <a href="/faq" style={{ color: "white", marginRight: "10px" }}>
+                  FAQ
+                </a>
+                <a
+                  href="/terms"
+                  style={{ color: "white", marginRight: "10px" }}
+                >
+                  Terms & Conditions
+                </a>
+                <a href="/privacy" style={{ color: "white" }}>
+                  Privacy Policy
+                </a>
+              </div>
+              <div style={{ marginTop: "10px" }}>
+                <a
+                  href="https://facebook.com/bungatanjung"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: "white", marginRight: "10px" }}
+                >
+                  <i className="fab fa-facebook"></i>
+                </a>
+                <a
+                  href="https://twitter.com/bungatanjung"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: "white", marginRight: "10px" }}
+                >
+                  <i className="fab fa-twitter"></i>
+                </a>
+                <a
+                  href="https://instagram.com/bungatanjung"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: "white" }}
+                >
+                  <i className="fab fa-instagram"></i>
+                </a>
+              </div>
+              <p style={{ marginTop: "10px", fontSize: "12px" }}>
+                &copy; 2024 Bunga Tanjung Sedot WC. All rights reserved.
+              </p>
+            </footer>
+          </main>
         </div>
-
-        {/* Footer Section */}
-        <footer
-          style={{
-            backgroundColor: "#253C78",
-            color: "white",
-            padding: "20px",
-            textAlign: "center",
-          }}
-        >
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <p style={{ margin: "0", paddingRight: "10px" }}>Use Client</p>
-            {/* Add more relevant content for SEO */}
-            <p style={{ margin: "0", paddingRight: "10px" }}>
-              Email: info@bungatanjung.com
-            </p>
-            <p style={{ margin: "0" }}>Phone: +62 822 9570 0707</p>
-          </div>
-          <div style={{ marginTop: "10px" }}>
-            <a href="/faq" style={{ color: "white", marginRight: "10px" }}>
-              FAQ
-            </a>
-            <a href="/terms" style={{ color: "white", marginRight: "10px" }}>
-              Terms & Conditions
-            </a>
-            <a href="/privacy" style={{ color: "white" }}>
-              Privacy Policy
-            </a>
-          </div>
-          <div style={{ marginTop: "10px" }}>
-            <a
-              href="https://facebook.com/bungatanjung"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: "white", marginRight: "10px" }}
-            >
-              <i className="fab fa-facebook"></i>
-            </a>
-            <a
-              href="https://twitter.com/bungatanjung"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: "white", marginRight: "10px" }}
-            >
-              <i className="fab fa-twitter"></i>
-            </a>
-            <a
-              href="https://instagram.com/bungatanjung"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: "white" }}
-            >
-              <i className="fab fa-instagram"></i>
-            </a>
-          </div>
-          <p style={{ marginTop: "10px", fontSize: "12px" }}>
-            &copy; 2024 Bunga Tanjung Sedot WC. All rights reserved.
-          </p>
-        </footer>
-      </main>
-    </div>
+      )}
+    </>
   );
 };
 

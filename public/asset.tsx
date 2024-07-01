@@ -9,6 +9,7 @@ import setting from "./cog.svg";
 import building from "./building.svg";
 import house from "./house.svg";
 import industry from "./industry.svg";
+import logo2 from "./logoHalaman.svg";
 
 export {
   SedotWc,
@@ -22,4 +23,5 @@ export {
   building,
   house,
   industry,
+  logo2,
 };

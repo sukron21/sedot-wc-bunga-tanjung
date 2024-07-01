@@ -135,7 +135,7 @@ const Home: React.FC = () => {
                 Bunga Tanjung Sedot Wc
               </p>
               <h1 style={{ fontSize: isMobile ? 20 : isTablet ? 30 : 44 }}>
-                CARA MENGATASI WC
+                PENYEDOTAN WC PENUH dan
               </h1>
               <h1
                 style={{
@@ -143,7 +143,7 @@ const Home: React.FC = () => {
                   paddingBottom: "5px",
                 }}
               >
-                MAMPET TANPA RIBET
+                MENGATASI MAMPET
               </h1>
               <p style={{ color: "#FFFFFFBF", fontSize: 12 }}>
                 Kami memiliki tim terlatih dan berpengalaman yang

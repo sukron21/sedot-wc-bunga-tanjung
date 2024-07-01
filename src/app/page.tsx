@@ -145,15 +145,13 @@ const Home: React.FC = () => {
               >
                 MENGATASI MAMPET
               </h1>
-              <h4
-                style={{ color: "#FFFFFFBF", fontSize: 12, paddingTop: "10px" }}
-              >
+              <p style={{ color: "white", fontSize: 14, paddingTop: "10px" }}>
                 Layanan Sedot WC
-              </h4>
-              <h4 style={{ color: "#FFFFFFBF", fontSize: 12 }}>
+              </p>
+              <p style={{ color: "white", fontSize: 14 }}>
                 Tangerang Raya, Tangerang Kota, Kabupaten tangeran dan Tangerang
                 Selatan
-              </h4>
+              </p>
               {/* <p style={{ color: "#FFFFFFBF", fontSize: 12 }}>
                 mampu menangani berbagai masalah sanitasi
               </p>

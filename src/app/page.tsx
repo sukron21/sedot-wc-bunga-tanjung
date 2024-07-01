@@ -471,7 +471,7 @@ const Home: React.FC = () => {
             </footer>
           </main>
           <a
-            href="https://wa.me/6281240030238"
+            href="https://wa.me/6285772420855"
             target="_blank"
             rel="noopener noreferrer"
             className={`${styles["whatsapp-icon"]}`}

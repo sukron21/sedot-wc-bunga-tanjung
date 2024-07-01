@@ -15,7 +15,7 @@ import {
 } from "../../public/asset";
 import Navbar from "@/component/Navbar/navbar"; // Pastikan path impor benar sesuai dengan struktur
 import { Button, Card, Col, Row, Spin } from "antd";
-import { ArrowRightOutlined } from "@ant-design/icons";
+import { ArrowRightOutlined, WhatsAppOutlined } from "@ant-design/icons";
 
 const Home: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -470,6 +470,14 @@ const Home: React.FC = () => {
               </p>
             </footer>
           </main>
+          <a
+            href="https://wa.me/6281240030238"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${styles["whatsapp-icon"]}`}
+          >
+            <WhatsAppOutlined style={{ fontSize: "32px", color: "#25D366" }} />
+          </a>
         </div>
       )}
     </>

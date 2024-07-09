@@ -10,9 +10,16 @@ import building from "./building.svg";
 import house from "./house.svg";
 import industry from "./industry.svg";
 import logo2 from "./logoHalaman.svg";
+import bgHeader2 from "./bgheader2.jpeg";
+import bgWa from "./BackgrounWA.svg";
+import iconWa from "./iconWa.svg";
+import header2 from "./header2.jpg";
 
 export {
   SedotWc,
+  header2,
+  bgWa,
+  iconWa,
   logo,
   bgHeader,
   wcMampet,
@@ -24,4 +31,5 @@ export {
   house,
   industry,
   logo2,
+  bgHeader2,
 };

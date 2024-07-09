@@ -12,15 +12,29 @@ import {
   house,
   setting,
   industry,
+  bgHeader2,
+  iconWa,
+  bgWa,
+  header2,
 } from "../../public/asset";
 import Navbar from "@/component/Navbar/navbar"; // Pastikan path impor benar sesuai dengan struktur
 import { Button, Card, Col, Row, Spin } from "antd";
-import { ArrowRightOutlined, WhatsAppOutlined } from "@ant-design/icons";
+import {
+  ArrowRightOutlined,
+  RightOutlined,
+  LeftOutlined,
+} from "@ant-design/icons";
 
 const Home: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [bgIndex, setBgIndex] = useState(0);
+  const [isSlideshowRunning, setIsSlideshowRunning] = useState(true);
+
+  const toggleSlideshow = () => {
+    setIsSlideshowRunning(!isSlideshowRunning);
+  };
 
   // Function to handle screen resize
   const handleResize = () => {
@@ -46,6 +60,32 @@ const Home: React.FC = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  const backgrounds = [
+    {
+      image: bgHeader.src,
+      overlay:
+        "linear-gradient(90deg, rgba(40, 60, 120, 0.8) 44.36%, rgba(0, 0, 0, 0.2) 100%)",
+    },
+    {
+      image: header2.src,
+      // overlay:
+      //   "linear-gradient(90deg, rgba(60, 80, 140, 0.8) 44.36%, rgba(0, 0, 0, 0.2) 100%)",
+    },
+  ];
+
+  useEffect(() => {
+    let interval: any;
+    if (isSlideshowRunning) {
+      interval = setInterval(() => {
+        setBgIndex((prevIndex) =>
+          prevIndex === backgrounds.length - 1 ? 0 : prevIndex + 1
+        );
+      }, 5000); // Ganti gambar setiap 5 detik
+    }
+
+    return () => clearInterval(interval);
+  }, [isSlideshowRunning]);
+
   return (
     <>
       {isLoading ? (
@@ -67,12 +107,13 @@ const Home: React.FC = () => {
         <div>
           <div
             className="container-fluid"
+            onClick={toggleSlideshow}
             style={{
               backgroundColor: "white",
               height: isMobile ? "40vh" : isTablet ? "55vh" : "100vh",
               width: "100vw",
-              overflow: "hidden", // Memastikan overflow hidden untuk menghindari keluar dari gambar latar belakang
-              position: "relative", // Kembali gunakan posisi relatif
+              overflow: "hidden",
+              position: "relative",
               color: "black",
             }}
           >
@@ -88,77 +129,117 @@ const Home: React.FC = () => {
               }}
             >
               <Image
-                src={bgHeader.src}
+                src={backgrounds[bgIndex].image}
                 layout="fill"
                 objectFit="cover"
                 alt="Background Image"
               />
-
-              {/* Background Overlay */}
               <div
                 style={{
                   position: "absolute",
                   top: 0,
                   left: 0,
-                  width: "100%",
+                  width: "50%",
                   height: "100%",
-                  background:
-                    "linear-gradient(90deg, rgba(37, 60, 120, 0.8) 44.36%, rgba(0, 0, 0, 0.2) 100%)",
+                  background: backgrounds[bgIndex].overlay,
                   opacity: 0.7,
-                  zIndex: 1, // Ensure this is behind the Navbar
+                  zIndex: 1,
                 }}
               />
             </div>
+
             {/* Navbar */}
             <Navbar />
             {/* Main Content */}
+            {/* {bgIndex === 0 ? ( */}
+
             <main
               style={{
                 zIndex: 2,
                 position: "relative",
                 display: "flex",
                 flexDirection: "column",
-                paddingTop: isMobile ? "10%" : isTablet ? "15%" : "10%",
+                paddingTop: isMobile ? "10%" : isTablet ? "15%" : "5%",
                 paddingLeft: "8%",
                 minHeight: "100vh",
                 backgroundColor: "transparent",
                 color: "white",
               }}
             >
-              <p
-                style={{
-                  color: "#FFFFFFBF",
-                  fontSize: 12,
-                  paddingBottom: "5px",
-                }}
-              >
-                Bunga Tanjung Sedot Wc
-              </p>
-              <h1 style={{ fontSize: isMobile ? 20 : isTablet ? 30 : 44 }}>
-                PENYEDOTAN WC PENUH dan
-              </h1>
-              <h1
-                style={{
-                  fontSize: isMobile ? 20 : isTablet ? 30 : 44,
-                  paddingBottom: "5px",
-                }}
-              >
-                MENGATASI MAMPET
-              </h1>
-              <p style={{ color: "white", fontSize: 14, paddingTop: "10px" }}>
-                Layanan Sedot WC
-              </p>
-              <p style={{ color: "white", fontSize: 14 }}>
-                Tangerang Raya, Tangerang Kota, Kabupaten tangeran dan Tangerang
-                Selatan
-              </p>
-              {/* <p style={{ color: "#FFFFFFBF", fontSize: 12 }}>
-                mampu menangani berbagai masalah sanitasi
-              </p>
-              <p style={{ color: "#FFFFFFBF", fontSize: 12 }}>
-                dengan keahlian profesionalisme
-              </p> */}
+              <Row>
+                <Col span={3} style={{ paddingTop: "10%" }}>
+                  {" "}
+                  <button
+                    onClick={() =>
+                      setBgIndex((prevIndex) => (prevIndex === 0 ? 1 : 0))
+                    }
+                    style={{ backgroundColor: "transparent", border: "none" }}
+                  >
+                    <LeftOutlined style={{ fontSize: "40px" }} />
+                  </button>
+                </Col>
+                <Col span={18}>
+                  {bgIndex === 0 ? (
+                    <>
+                      <span style={{ fontSize: 12 }}>
+                        <span
+                          style={{
+                            backgroundColor: "#2B59C3",
+                            color: "#FFFF00",
+                            padding: "2px 5px",
+                            borderRadius: "3px",
+                          }}
+                        >
+                          Bunga Tanjung Sedot Wc
+                        </span>
+                      </span>
+                      <h1
+                        style={{ fontSize: isMobile ? 20 : isTablet ? 30 : 44 }}
+                      >
+                        PENYEDOTAN WC PENUH dan
+                      </h1>
+                      <h1
+                        style={{
+                          fontSize: isMobile ? 20 : isTablet ? 30 : 44,
+                          paddingBottom: "5px",
+                        }}
+                      >
+                        MENGATASI MAMPET
+                      </h1>
+                      <p
+                        style={{
+                          color: "white",
+                          fontSize: 14,
+                          paddingTop: "10px",
+                        }}
+                      >
+                        Layanan Sedot WC
+                      </p>
+                      <p style={{ color: "white", fontSize: 14 }}>
+                        Tangerang Raya, Tangerang Kota, Kabupaten tangeran dan
+                        Tangerang Selatan
+                      </p>
+                    </>
+                  ) : null}
+                </Col>
+                <Col span={3} style={{ paddingTop: "10%" }}>
+                  {" "}
+                  <button
+                    onClick={() =>
+                      setBgIndex((prevIndex) => (prevIndex === 1 ? 0 : 1))
+                    }
+                    style={{
+                      backgroundColor: "transparent",
+                      border: "none",
+                      cursor: "pointer",
+                    }}
+                  >
+                    <RightOutlined style={{ fontSize: "40px" }} />
+                  </button>
+                </Col>
+              </Row>
             </main>
+            {/* ) : null} */}
           </div>
 
           {/* Main Content Section */}
@@ -470,14 +551,41 @@ const Home: React.FC = () => {
               </p>
             </footer>
           </main>
-          <a
+          <div className={styles["whatsapp-icon-container"]}>
+            <a
+              href="https://wa.me/6285772420855"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${styles["whatsapp-icon-link"]} ${styles["fixed-icon"]}`}
+            >
+              <img
+                className={styles["icon-wa"]}
+                alt="Perbaikan WC mampet dengan layanan cepat di Tangerang"
+                src={iconWa.src}
+              />
+              <img
+                className={styles["bg-wa"]}
+                alt="Perbaikan WC mampet dengan layanan cepat di Tangerang"
+                src={bgWa.src}
+              />
+            </a>
+          </div>
+          {/* <a
             href="https://wa.me/6285772420855"
             target="_blank"
             rel="noopener noreferrer"
             className={`${styles["whatsapp-icon"]}`}
           >
+            <img
+              alt="Perbaikan WC mampet dengan layanan cepat di Tangerang"
+              src={iconWa.src}
+            />
+            <img
+              alt="Perbaikan WC mampet dengan layanan cepat di Tangerang"
+              src={bgWa.src}
+            />
             <WhatsAppOutlined style={{ fontSize: "32px", color: "#25D366" }} />
-          </a>
+          </a> */}
         </div>
       )}
     </>

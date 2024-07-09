@@ -1,3 +1,40 @@
+.whatsapp-icon-container {
+  position: relative;
+  display: inline-block;
+  margin-top: 20px; /* Atur jarak dari atas sesuai kebutuhan */
+  margin-right: 20px; /* Atur jarak dari kanan sesuai kebutuhan */
+  float: right; /* Gunakan float right untuk menempatkan ikon di kanan */
+}
+
+.whatsapp-icon-link {
+  display: block;
+  position: relative; /* Gunakan posisi relatif untuk kontainer link */
+}
+
+.icon-wa {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1; /* Z-index lebih tinggi untuk ikon agar muncul di atas latar belakang */
+  width: 50px; /* Sesuaikan ukuran ikon sesuai kebutuhan */
+  height: 50px; /* Sesuaikan ukuran ikon sesuai kebutuhan */
+}
+
+.bg-wa {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0; /* Z-index lebih rendah untuk latar belakang */
+  width: 50px; /* Sesuaikan ukuran latar belakang sesuai kebutuhan */
+  height: 50px; /* Sesuaikan ukuran latar belakang sesuai kebutuhan */
+}
+
+.fixed-icon {
+  position: fixed; /* Mengubah posisi menjadi fixed saat digulir */
+  top: 85vh; /* Sesuaikan dengan jarak dari atas yang diinginkan */
+  right: 5%; /* Sesuaikan dengan jarak dari kanan yang diinginkan */
+}
+
 .main {
   display: flex;
   flex-direction: column;
@@ -223,12 +260,22 @@
   .logo {
     width: 25vw; /* Adjust width for smaller screens */
   }
+  .fixed-icon {
+    position: fixed; /* Mengubah posisi menjadi fixed saat digulir */
+    top: 85vh; /* Sesuaikan dengan jarak dari atas yang diinginkan */
+    right: 15%; /* Sesuaikan dengan jarak dari kanan yang diinginkan */
+  }
 }
 
 /* Tablet and Smaller Desktop */
 @media (min-width: 701px) and (max-width: 1120px) {
   .grid {
     grid-template-columns: repeat(2, 50%);
+  }
+  .fixed-icon {
+    position: fixed; /* Mengubah posisi menjadi fixed saat digulir */
+    top: 90vh; /* Sesuaikan dengan jarak dari atas yang diinginkan */
+    right: 10%; /* Sesuaikan dengan jarak dari kanan yang diinginkan */
   }
 }
 

@@ -14,9 +14,19 @@ import bgHeader2 from "./bgheader2.jpeg";
 import bgWa from "./BackgrounWA.svg";
 import iconWa from "./iconWa.svg";
 import header2 from "./header2.jpg";
+import layanan1 from "./layanan1.jpg";
+import layanan2 from "./layanan2.jpg";
+import layanan3 from "./layanan3.jpg";
+import layanan4 from "./layanan4.jpg";
+import konten1 from "./konten1.jpeg";
 
 export {
   SedotWc,
+  konten1,
+  layanan2,
+  layanan3,
+  layanan4,
+  layanan1,
   header2,
   bgWa,
   iconWa,

@@ -4,12 +4,15 @@ import { MenuOutlined } from "@ant-design/icons";
 import { logo } from "../../../public/asset";
 import styles from "../../app/page.module.css"; // Import CSS Module
 import Link from "next/link";
+import { link } from "fs";
+import { usePathname } from "next/navigation";
 
 const { Header } = Layout;
 
 const Navbar: React.FC = () => {
-  const [current, setCurrent] = useState("home");
+  const [current, setCurrent] = useState("");
   const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const pathname = usePathname();
 
   // Function to handle screen resize
   const handleResize = () => {
@@ -25,30 +28,60 @@ const Navbar: React.FC = () => {
     };
   }, []);
 
-  const handleClick = (e: any) => {
-    setCurrent(e.key);
+  const getCurrentMenuKey = () => {
+    switch (pathname) {
+      case "/profile":
+        setCurrent("profile");
+        return;
+      case "/":
+        setCurrent("home");
+        return;
+      default:
+        setCurrent("home");
+        return;
+    }
+    console.log("current", current);
   };
+  useEffect(() => {
+    getCurrentMenuKey();
+  }, []);
 
   // Menu items definition
   const menuItems = [
-    { key: "home", title: "Home" },
-    { key: "about", title: "About" },
-    { key: "contact", title: "Contact" },
+    { key: "home", title: "Home", link: "/" },
+    { key: "profile", title: "Profile", link: "/profile" },
+    { key: "contact", title: "Contact", link: "/https://wa.me/6285772420855" },
   ];
 
   // Render menu items
   const renderMenuItems = () => {
-    return menuItems.map((item) => (
-      <Menu.Item
-        key={item.key}
-        style={{
-          color: current === item.key ? "white" : "inherit",
-          padding: "0 12px",
-        }}
-      >
-        <Link href="/">{item.title}</Link>
-      </Menu.Item>
-    ));
+    return menuItems.map((item) => {
+      const isContact = item.key === "contact";
+      return (
+        <Menu.Item
+          key={item.key}
+          style={{
+            color: current === item.key ? "blue" : "inherit",
+            padding: "0 12px",
+          }}
+        >
+          {isContact ? (
+            <a
+              href="https://wa.me/6285772420855"
+              style={{ color: "white" }}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {item.title}
+            </a>
+          ) : (
+            <Link href={item.link} style={{ color: "white" }}>
+              {item.title}
+            </Link>
+          )}
+        </Menu.Item>
+      );
+    });
   };
 
   return (
@@ -73,7 +106,7 @@ const Navbar: React.FC = () => {
           <Menu
             mode="horizontal"
             selectedKeys={[current]}
-            onClick={handleClick}
+            // onClick={handleClick}
             style={{
               backgroundColor: "transparent",
               border: "none",
@@ -91,11 +124,7 @@ const Navbar: React.FC = () => {
       {/* Display Dropdown on small screens */}
       {isSmallScreen && (
         <Dropdown
-          overlay={
-            <Menu onClick={handleClick} selectedKeys={[current]}>
-              {renderMenuItems()}
-            </Menu>
-          }
+          overlay={<Menu selectedKeys={[current]}>{renderMenuItems()}</Menu>}
           trigger={["click"]}
           placement="bottomRight"
         >

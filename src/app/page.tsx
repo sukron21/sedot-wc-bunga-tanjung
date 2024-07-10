@@ -16,6 +16,10 @@ import {
   iconWa,
   bgWa,
   header2,
+  layanan1,
+  layanan2,
+  layanan3,
+  layanan4,
 } from "../../public/asset";
 import Navbar from "@/component/Navbar/navbar"; // Pastikan path impor benar sesuai dengan struktur
 import { Button, Card, Col, Row, Spin } from "antd";
@@ -24,6 +28,7 @@ import {
   RightOutlined,
   LeftOutlined,
 } from "@ant-design/icons";
+import Link from "next/link";
 
 const Home: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -62,9 +67,8 @@ const Home: React.FC = () => {
 
   const backgrounds = [
     {
-      image: bgHeader.src,
-      overlay:
-        "linear-gradient(90deg, rgba(40, 60, 120, 0.8) 44.36%, rgba(0, 0, 0, 0.2) 100%)",
+      image: bgHeader2.src,
+      overlay: "253C78",
     },
     {
       image: header2.src,
@@ -85,6 +89,12 @@ const Home: React.FC = () => {
 
     return () => clearInterval(interval);
   }, [isSlideshowRunning]);
+
+  const handleWhatsAppClick = () => {
+    const phoneNumber = "6285772420855"; // Ganti dengan nomor WhatsApp yang diinginkan
+    const url = `https://wa.me/${phoneNumber}`;
+    window.open(url, "_blank");
+  };
 
   return (
     <>
@@ -134,15 +144,17 @@ const Home: React.FC = () => {
                 objectFit="cover"
                 alt="Background Image"
               />
+
               <div
                 style={{
                   position: "absolute",
                   top: 0,
                   left: 0,
-                  width: "50%",
+                  width: "100%",
                   height: "100%",
-                  background: backgrounds[bgIndex].overlay,
-                  opacity: 0.7,
+                  // backgroundColor: `${backgrounds[bgIndex].overlay}`,
+                  backgroundColor: "#253C78",
+                  opacity: 0.6,
                   zIndex: 1,
                 }}
               />
@@ -159,7 +171,7 @@ const Home: React.FC = () => {
                 position: "relative",
                 display: "flex",
                 flexDirection: "column",
-                paddingTop: isMobile ? "10%" : isTablet ? "15%" : "5%",
+                paddingTop: isMobile ? "1%" : isTablet ? "10%" : "5%",
                 paddingLeft: "8%",
                 minHeight: "100vh",
                 backgroundColor: "transparent",
@@ -175,7 +187,15 @@ const Home: React.FC = () => {
                     }
                     style={{ backgroundColor: "transparent", border: "none" }}
                   >
-                    <LeftOutlined style={{ fontSize: "40px" }} />
+                    <LeftOutlined
+                      style={{
+                        fontSize: isMobile
+                          ? "20px"
+                          : isTablet
+                          ? "30px"
+                          : "40px",
+                      }}
+                    />
                   </button>
                 </Col>
                 <Col span={18}>
@@ -234,7 +254,15 @@ const Home: React.FC = () => {
                       cursor: "pointer",
                     }}
                   >
-                    <RightOutlined style={{ fontSize: "40px" }} />
+                    <RightOutlined
+                      style={{
+                        fontSize: isMobile
+                          ? "20px"
+                          : isTablet
+                          ? "30px"
+                          : "40px",
+                      }}
+                    />
                   </button>
                 </Col>
               </Row>
@@ -243,79 +271,85 @@ const Home: React.FC = () => {
           </div>
 
           {/* Main Content Section */}
-          <main style={{ color: "black" }}>
-            <Row
+          <main style={{ color: "black", paddingTop: "20px" }}>
+            <div
               style={{
-                paddingLeft: "10%",
-                paddingRight: "10%",
-                paddingTop: "5%",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                // minHeight: "60vh",
+                paddingBottom: "20px",
               }}
             >
-              <Col xs={24} sm={12}>
-                <Card
-                  hoverable
-                  style={{
-                    width: "80%",
-                    marginBottom: "20px", // Memberikan ruang antar card di perangkat mobile
-                  }}
-                  cover={
-                    <img
-                      alt="Perbaikan WC mampet dengan layanan cepat di Tangerang"
-                      src={wcMampet.src}
-                    />
-                  }
-                >
-                  <h4>WC Mampet</h4>
-                  <p style={{ color: "#6E6E6E", fontSize: 12 }}>
-                    Temukan solusi terbaik untuk masalah WC mampet di area
-                    Tangerang dengan layanan kami yang cepat dan berkualitas.
-                    Kami menyediakan penanganan profesional menggunakan
-                    teknologi terbaru untuk memastikan WC Anda kembali berfungsi
-                    dalam waktu singkat. Jangan biarkan masalah WC mampet
-                    mengganggu kenyamanan Anda - hubungi kami sekarang untuk
-                    layanan terbaik!
-                  </p>
-                </Card>
-              </Col>
-              <Col xs={24} sm={12}>
-                <Card
-                  hoverable
-                  style={{
-                    width: "80%",
-                  }}
-                  cover={
-                    <img
-                      alt="Perbaikan WC mampet dengan layanan cepat di Tangerang"
-                      src={mobil.src}
-                    />
-                  }
-                >
-                  <h5
-                    style={{
-                      color: "#253C78",
-                      paddingTop: "12px",
-                      paddingBottom: "12px",
-                    }}
+              <Row justify="center" gutter={[16, 16]}>
+                <Col xs={20} sm={10}>
+                  <Card
+                    // hoverable
+                    // style={{
+                    //   width: "80%",
+                    //   marginBottom: "20px",
+                    // }}
+                    cover={
+                      <img
+                        alt="Perbaikan WC mampet dengan layanan cepat di Tangerang"
+                        src={wcMampet.src}
+                      />
+                    }
                   >
-                    WHO WE ARE
-                  </h5>
-                  <h2 style={{ paddingBottom: "12px" }}>
-                    Sedot WC Bunga Tanjung: Layanan Profesional di Tangerang
-                  </h2>
-                  <Button
-                    style={{
-                      backgroundColor: "#2B59C3",
-                      color: "white",
-                      paddingBottom: "12px",
-                      paddingTop: "12px",
-                    }}
+                    <h4>WC Mampet</h4>
+                    <p style={{ color: "#6E6E6E", fontSize: 12 }}>
+                      Temukan solusi terbaik untuk masalah WC mampet di area
+                      Tangerang dengan layanan kami yang cepat dan berkualitas.
+                      Kami menyediakan penanganan profesional menggunakan
+                      teknologi terbaru untuk memastikan WC Anda kembali
+                      berfungsi dalam waktu singkat. Jangan biarkan masalah WC
+                      mampet mengganggu kenyamanan Anda - hubungi kami sekarang
+                      untuk layanan terbaik!
+                    </p>
+                  </Card>
+                </Col>
+                <Col xs={24} sm={10}>
+                  <Card
+                    // hoverable
+                    // style={{
+                    //   width: "80%",
+                    // }}
+                    cover={
+                      <img
+                        alt="Perbaikan WC mampet dengan layanan cepat di Tangerang"
+                        src={mobil.src}
+                      />
+                    }
                   >
-                    Learn More <ArrowRightOutlined />
-                  </Button>
-                </Card>
-              </Col>
-            </Row>
-
+                    <h5
+                      style={{
+                        color: "#253C78",
+                        paddingTop: "12px",
+                        paddingBottom: "12px",
+                      }}
+                    >
+                      WHO WE ARE
+                    </h5>
+                    <h2 style={{ paddingBottom: "12px" }}>
+                      Sedot WC Bunga Tanjung: Layanan Profesional di Tangerang
+                    </h2>
+                    <Link href={"/profile"}>
+                      <Button
+                        style={{
+                          backgroundColor: "#2B59C3",
+                          color: "white",
+                          paddingBottom: "12px",
+                          paddingTop: "12px",
+                        }}
+                      >
+                        Learn More <ArrowRightOutlined />
+                      </Button>
+                    </Link>
+                  </Card>
+                </Col>
+              </Row>
+            </div>
             {/* Featured Service Section */}
             <Row style={{ backgroundColor: "#F9F9F9", padding: "20px" }}>
               <Col
@@ -391,7 +425,7 @@ const Home: React.FC = () => {
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
-                minHeight: "60vh",
+                // minHeight: "60vh",
               }}
             >
               <h5
@@ -407,83 +441,152 @@ const Home: React.FC = () => {
               <h2 style={{ marginBottom: "12px", textAlign: "center" }}>
                 OUR SERVICE
               </h2>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                minHeight: "60vh",
+                paddingTop: "20px",
+              }}
+            >
               <Row justify="center">
-                <Col xs={12} sm={6}>
+                <Col xs={24} sm={12}>
                   <Card
+                    hoverable
                     style={{
-                      justifyContent: "center",
-                      display: "flex",
-                      flexDirection: "column",
-                      textAlign: "center",
-                      padding: "20px",
-                      alignItems: "center",
+                      width: "80%",
+                      margin: "0 auto", // Centering the card horizontally
+                      textAlign: "left", // Aligning text content to the left
                     }}
+                    actions={[
+                      <Button
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          backgroundColor: "#2B59C3",
+                          color: "white",
+                        }}
+                        onClick={handleWhatsAppClick}
+                      >
+                        Hubungi kami
+                      </Button>,
+                    ]}
+                    cover={<img alt="example" src={layanan1.src} />}
                   >
-                    <img
-                      alt="Perbaikan WC mampet dengan layanan cepat di Tangerang"
-                      src={building.src}
-                    />
-                    <h4>Sedot Wc Kantor</h4>
+                    <h4>01. Sedot WC/SepticTank</h4>
+                    <p>
+                      Layanan sedot WC dan septictank kami membantu membersihkan
+                      dan menguras limbah domestik dari sistem pembuangan rumah,
+                      gedung perkantoran, atau bangunan komersial lainnya. Tim
+                      kami dilengkapi dengan peralatan modern untuk memastikan
+                      proses sedot limbah berjalan lancar dan higienis.
+                    </p>
                   </Card>
                 </Col>
-                <Col
-                  xs={12}
-                  sm={6}
-                  style={{ paddingLeft: "12px", paddingRight: "12px" }}
-                >
+                <Col xs={24} sm={12}>
                   <Card
+                    hoverable
                     style={{
-                      justifyContent: "center",
-                      display: "flex",
-                      flexDirection: "column",
-                      textAlign: "center",
-                      padding: "20px",
-                      alignItems: "center",
-                      backgroundColor: "#253C78",
-                      color: "white",
+                      width: "80%",
+                      margin: "0 auto", // Centering the card horizontally
+                      textAlign: "left", // Aligning text content to the left
                     }}
+                    actions={[
+                      <Button
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          backgroundColor: "#2B59C3",
+                          color: "white",
+                        }}
+                        onClick={handleWhatsAppClick}
+                      >
+                        Hubungi kami
+                      </Button>,
+                    ]}
+                    cover={<img alt="example" src={layanan2.src} />}
                   >
-                    <img
-                      alt="Perbaikan WC mampet dengan layanan cepat di Tangerang"
-                      src={house.src}
-                    />
-                    <h4>Sedot Wc Rumah</h4>
+                    <h4>02. Sedot Restoran</h4>
+                    <p>
+                      Limbah dari restoran dapat menjadi masalah serius jika
+                      tidak ditangani dengan benar. Kami menyediakan layanan
+                      khusus untuk mengatasi limbah restoran, termasuk
+                      pengurasan lemak, penghilangan bau tidak sedap, dan
+                      pembersihan saluran dapur.
+                    </p>
                   </Card>
                 </Col>
-                <Col xs={12} sm={6} style={{ paddingRight: "12px" }}>
+              </Row>
+              <Row
+                justify="center"
+                style={{ paddingTop: "20px", paddingBottom: "20px" }}
+              >
+                <Col xs={24} sm={12}>
                   <Card
+                    hoverable
                     style={{
-                      justifyContent: "center",
-                      display: "flex",
-                      flexDirection: "column",
-                      textAlign: "center",
-                      padding: "20px",
-                      alignItems: "center",
+                      width: "80%",
+                      margin: "0 auto", // Centering the card horizontally
+                      textAlign: "left", // Aligning text content to the left
                     }}
+                    actions={[
+                      <Button
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          backgroundColor: "#2B59C3",
+                          color: "white",
+                        }}
+                        onClick={handleWhatsAppClick}
+                      >
+                        Hubungi kami
+                      </Button>,
+                    ]}
+                    cover={<img alt="example" src={layanan3.src} />}
                   >
-                    <img
-                      alt="Perbaikan WC mampet dengan layanan cepat di Tangerang"
-                      src={setting.src}
-                    />
-                    <h4>Maintenance Toliet</h4>
+                    <h4>03. Sedot Limbah Cair</h4>
+                    <p>
+                      Kami juga menyediakan layanan sedot limbah cair untuk
+                      berbagai keperluan, termasuk limbah dari industri,
+                      restoran, atau fasilitas komersial lainnya. Tim kami siap
+                      membantu Anda mengatasi masalah limbah cair dengan cepat
+                      dan efektif.
+                    </p>
                   </Card>
                 </Col>
-                <Col xs={12} sm={6}>
+                <Col xs={24} sm={12}>
                   <Card
+                    hoverable
                     style={{
-                      justifyContent: "center",
-                      display: "flex",
-                      flexDirection: "column",
-                      textAlign: "center",
-                      padding: "20px",
-                      alignItems: "center",
+                      width: "80%",
+                      margin: "0 auto", // Centering the card horizontally
+                      textAlign: "left", // Aligning text content to the left
                     }}
+                    actions={[
+                      <Button
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          backgroundColor: "#2B59C3",
+                          color: "white",
+                        }}
+                        onClick={handleWhatsAppClick}
+                      >
+                        Hubungi kami
+                      </Button>,
+                    ]}
+                    cover={<img alt="example" src={layanan4.src} />}
                   >
-                    <img
-                      alt="Perbaikan WC mampet dengan layanan cepat di Tangerang"
-                      src={industry.src}
-                    />
-                    <h4>Pemasangan Toilet</h4>
+                    <h4>04. Sedot Limbah Industri</h4>
+                    <p>
+                      Kami memiliki pengalaman dalam menangani limbah cair dari
+                      berbagai industri. Layanan kami mencakup penyedotan limbah
+                      cair, pengelolaan limbah beracun, dan pengolahan limbah
+                      sesuai dengan standar lingkungan yang berlaku.
+                    </p>
                   </Card>
                 </Col>
               </Row>
@@ -498,7 +601,7 @@ const Home: React.FC = () => {
                 textAlign: "center",
               }}
             >
-              <div style={{ display: "flex", justifyContent: "center" }}>
+              <div style={{ justifyContent: "center" }}>
                 <p style={{ margin: "0", paddingRight: "10px" }}>Use Client</p>
                 {/* Add more relevant content for SEO */}
                 <p style={{ margin: "0", paddingRight: "10px" }}>
@@ -570,22 +673,6 @@ const Home: React.FC = () => {
               />
             </a>
           </div>
-          {/* <a
-            href="https://wa.me/6285772420855"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`${styles["whatsapp-icon"]}`}
-          >
-            <img
-              alt="Perbaikan WC mampet dengan layanan cepat di Tangerang"
-              src={iconWa.src}
-            />
-            <img
-              alt="Perbaikan WC mampet dengan layanan cepat di Tangerang"
-              src={bgWa.src}
-            />
-            <WhatsAppOutlined style={{ fontSize: "32px", color: "#25D366" }} />
-          </a> */}
         </div>
       )}
     </>

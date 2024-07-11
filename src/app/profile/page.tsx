@@ -248,16 +248,50 @@ const Home: React.FC = () => {
                       paddingBottom: "12px",
                     }}
                   >
-                    FEATURED SERVICE
+                    Profile
                   </h5>
                   <h2 style={{ marginBottom: "12px" }}>
-                    Lorem Ipsum Dolor Sit Amet, Consectur
+                    Sedot WC Bunga Tanjung Tangerang
                   </h2>
-                  <p style={{ marginBottom: "0" }}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua.
+                  <p>
+                    ChatGPT Tentu! Berikut adalah satu paragraf SEO-friendly
+                    yang menggabungkan semua elemen yang Anda minta: Sedot WC
+                    Tangerang Raya menawarkan layanan pembuangan limbah WC yang
+                    cepat, bersih, dan rapi di Kota Tangerang, Tangerang
+                    Selatan, dan sekitarnya. Kami berkomitmen untuk mengutamakan
+                    kepuasan pelanggan dengan pelayanan profesional yang efisien
+                    dan ramah. Menggunakan peralatan modern dan teknik terdepan,
+                    tim kami memastikan setiap pekerjaan dilakukan dengan
+                    standar kebersihan tinggi, menjaga agar aktivitas harian
+                    Anda tidak terganggu. Pilih Sedot WC Tangerang Raya untuk
+                    layanan yang mengedepankan kualitas dan kepuasan pelanggan,
+                    dan rasakan pengalaman terbaik dalam penanganan masalah
+                    pembuangan limbah rumah Anda.
                   </p>
+                  {/* <p style={{ marginBottom: "0" }}>
+                    Sedot WC Bunga Tanjung Tangerang merupakan solusi terpercaya
+                    untuk kebutuhan pembuangan limbah WC Anda di Kota Tangerang,
+                    Tangerang Selatan, dan sekitarnya. Kami menyediakan layanan
+                    sedot WC yang cepat, bersih, dan rapi, memastikan setiap
+                    pekerjaan dilakukan dengan efisiensi tinggi dan standar
+                    kebersihan yang ketat. Tim profesional kami siap membantu
+                    Anda dengan layanan yang mengedepankan kepuasan pelanggan,
+                    sehingga Anda dapat merasa tenang mengetahui bahwa sistem
+                    pembuangan limbah rumah Anda berada di tangan yang tepat.
+                  </p>
+                  <p>
+                    Di Sedot WC Bunga Tanjung Tangerang, kami mengutamakan
+                    pelanggan dengan memberikan pelayanan yang ramah dan
+                    responsif. Kami memahami pentingnya penanganan masalah
+                    pembuangan limbah dengan cara yang tidak mengganggu
+                    aktivitas harian Anda. Dengan menggunakan peralatan modern
+                    dan teknik yang sudah terbukti efektif, kami memastikan
+                    bahwa setiap proses sedot WC dilakukan dengan kecepatan dan
+                    ketelitian yang maksimal. Hubungi kami untuk layanan sedot
+                    WC terbaik di Tangerang Raya dan nikmati pengalaman yang
+                    memuaskan dengan hasil kerja yang memprioritaskan kebersihan
+                    dan kepuasan Anda.
+                  </p> */}
                 </Card>
               </Col>
               <Col
@@ -300,15 +334,36 @@ const Home: React.FC = () => {
               color: "white",
               padding: "20px",
               textAlign: "center",
+              paddingTop: "10px",
             }}
           >
-            <div style={{ justifyContent: "center" }}>
+            <div style={{ justifyContent: "left" }}>
               {/* <p style={{ margin: "0", paddingRight: "10px" }}>Use Client</p> */}
               {/* Add more relevant content for SEO */}
-              <p style={{ margin: "0", paddingRight: "10px" }}>
-                Email: info@bungatanjung.com
-              </p>{" "}
-              <p style={{ margin: "0" }}>Phone: +62 857-7242-0855</p>
+              <p
+                style={{
+                  margin: "0",
+                  paddingRight: "10px",
+                  paddingBottom: "40px",
+                  paddingTop: "20px",
+                }}
+              >
+                Dapatkan solusi WC bersih dan terpercaya sekarang juga dengan
+                menghubungi tim profesional kami untuk layanan terbaik
+              </p>
+              <p style={{ color: "red" }}> 085772420855</p>
+            </div>
+            <div style={{ paddingTop: "50px", paddingBottom: "50px" }}>
+              <Row>
+                <Col span={24} style={{ textAlign: "center" }}>
+                  <p>
+                    <b>Lokasi Layanan</b>
+                  </p>
+                  <p>Sedot WC tangerang Raya</p>
+                  <p>Sedot WC tangerang selatan</p>
+                  <p>Sedot WC kota tangerang</p>
+                </Col>
+              </Row>
             </div>
             <div style={{ marginTop: "10px" }}>
               <a href="/faq" style={{ color: "white", marginRight: "10px" }}>

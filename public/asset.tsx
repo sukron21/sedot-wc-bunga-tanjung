@@ -19,9 +19,11 @@ import layanan2 from "./layanan2.jpg";
 import layanan3 from "./layanan3.jpg";
 import layanan4 from "./layanan4.jpg";
 import konten1 from "./konten1.jpeg";
+import bg3 from "./bg3.jpg";
 
 export {
   SedotWc,
+  bg3,
   konten1,
   layanan2,
   layanan3,

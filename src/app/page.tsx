@@ -20,6 +20,7 @@ import {
   layanan2,
   layanan3,
   layanan4,
+  bg3,
 } from "../../public/asset";
 import Navbar from "@/component/Navbar/navbar"; // Pastikan path impor benar sesuai dengan struktur
 import { Button, Card, Col, Row, Spin } from "antd";
@@ -71,7 +72,7 @@ const Home: React.FC = () => {
       overlay: "253C78",
     },
     {
-      image: header2.src,
+      image: bg3.src,
       // overlay:
       //   "linear-gradient(90deg, rgba(60, 80, 140, 0.8) 44.36%, rgba(0, 0, 0, 0.2) 100%)",
     },

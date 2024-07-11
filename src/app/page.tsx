@@ -312,13 +312,13 @@ const Home: React.FC = () => {
                 <Col xs={24} sm={10}>
                   <Card
                     // hoverable
-                    // style={{
-                    //   width: "80%",
-                    // }}
+                    style={{
+                      backgroundColor: "#F9F9F9",
+                    }}
                     cover={
                       <img
                         alt="Perbaikan WC mampet dengan layanan cepat di Tangerang"
-                        src={mobil.src}
+                        src={bgHeader2.src}
                       />
                     }
                   >
@@ -351,72 +351,6 @@ const Home: React.FC = () => {
               </Row>
             </div>
             {/* Featured Service Section */}
-            <Row style={{ backgroundColor: "#F9F9F9", padding: "20px" }}>
-              <Col
-                xs={24}
-                sm={12}
-                style={{ display: "flex", alignItems: "center" }}
-              >
-                <Card
-                  style={{
-                    backgroundColor: "transparent",
-                    textAlign: "left",
-                    maxWidth: "80%",
-                    padding: "20px",
-                  }}
-                >
-                  <h5
-                    style={{
-                      color: "#253C78",
-                      paddingTop: "12px",
-                      paddingBottom: "12px",
-                    }}
-                  >
-                    FEATURED SERVICE
-                  </h5>
-                  <h2 style={{ marginBottom: "12px" }}>
-                    Lorem Ipsum Dolor Sit Amet, Consectur
-                  </h2>
-                  <p style={{ marginBottom: "0" }}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua.
-                  </p>
-                </Card>
-              </Col>
-              <Col
-                xs={24}
-                sm={12}
-                style={{ display: "flex", alignItems: "center" }}
-              >
-                <Row gutter={[16, 16]} style={{ maxWidth: "80%" }}>
-                  <Col style={{ paddingTop: "20px" }} span={12}>
-                    <img
-                      alt="Perbaikan WC mampet dengan layanan cepat di Tangerang"
-                      src={mobil2.src}
-                      style={{
-                        width: "100%",
-                        maxWidth: "200px",
-                        display: "block",
-                        margin: "auto",
-                      }}
-                    />
-                  </Col>
-                  <Col span={12}>
-                    <img
-                      alt="Perbaikan WC mampet dengan layanan cepat di Tangerang"
-                      src={tinja.src}
-                      style={{
-                        width: "100%",
-                        maxWidth: "200px",
-                        display: "block",
-                        margin: "auto",
-                      }}
-                    />
-                  </Col>
-                </Row>
-              </Col>
-            </Row>
 
             {/* What We Do Section */}
             <div
@@ -425,6 +359,7 @@ const Home: React.FC = () => {
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
+                backgroundColor: "#F9F9F9",
                 // minHeight: "60vh",
               }}
             >
@@ -591,7 +526,39 @@ const Home: React.FC = () => {
                 </Col>
               </Row>
             </div>
-
+            <div
+              style={{
+                backgroundColor: "#F9F9F9",
+                color: "black",
+                padding: "20px",
+                textAlign: "center",
+                paddingTop: "10px",
+                marginBottom: "30px",
+              }}
+            >
+              <div
+                className="footer content sedot sedot wc tanjung bunga tangerang"
+                style={{ justifyContent: "center" }}
+              >
+                <div
+                  className="judul content sedot wc tanjung bunga tangerang"
+                  style={{ paddingTop: 20 }}
+                >
+                  <h3>Apapun keluhan WC anda</h3>
+                  <h3>Percayakan kepada Tenaga ahli kami</h3>
+                </div>
+                <div
+                  className="content sedot wc tanjung bunga tangerang"
+                  style={{ paddingTop: 20, paddingBottom: "30px" }}
+                >
+                  <p>
+                    Jamina puas memberikan pelayanan terbaik tanpa biaya
+                    tersembunyi
+                  </p>
+                </div>
+                <Button onClick={handleWhatsAppClick}>Hubungi Kami</Button>
+              </div>
+            </div>
             {/* Footer Section */}
             <footer
               style={{
@@ -599,15 +566,36 @@ const Home: React.FC = () => {
                 color: "white",
                 padding: "20px",
                 textAlign: "center",
+                paddingTop: "10px",
               }}
             >
-              <div style={{ justifyContent: "center" }}>
-                <p style={{ margin: "0", paddingRight: "10px" }}>Use Client</p>
+              <div style={{ justifyContent: "left" }}>
+                {/* <p style={{ margin: "0", paddingRight: "10px" }}>Use Client</p> */}
                 {/* Add more relevant content for SEO */}
-                <p style={{ margin: "0", paddingRight: "10px" }}>
-                  Email: info@bungatanjung.com
+                <p
+                  style={{
+                    margin: "0",
+                    paddingRight: "10px",
+                    paddingBottom: "40px",
+                    paddingTop: "20px",
+                  }}
+                >
+                  Dapatkan solusi WC bersih dan terpercaya sekarang juga dengan
+                  menghubungi tim profesional kami untuk layanan terbaik
                 </p>
-                <p style={{ margin: "0" }}>Phone: +62 812-4003-0238</p>
+                <p style={{ color: "red" }}> 085772420855</p>
+              </div>
+              <div style={{ paddingTop: "50px", paddingBottom: "50px" }}>
+                <Row>
+                  <Col span={24} style={{ textAlign: "center" }}>
+                    <p>
+                      <b>Lokasi Layanan</b>
+                    </p>
+                    <p>Sedot WC tangerang Raya</p>
+                    <p>Sedot WC tangerang selatan</p>
+                    <p>Sedot WC kota tangerang</p>
+                  </Col>
+                </Row>
               </div>
               <div style={{ marginTop: "10px" }}>
                 <a href="/faq" style={{ color: "white", marginRight: "10px" }}>
@@ -655,7 +643,17 @@ const Home: React.FC = () => {
             </footer>
           </main>
           <div className={styles["whatsapp-icon-container"]}>
-            <a
+            <Button
+              className={`${styles["whatsapp-icon-link"]} ${styles["fixed-icon"]}`}
+              style={{
+                backgroundColor: "#2B59C3",
+                borderColor: "#2B59C3",
+                color: "white",
+              }}
+            >
+              Hubungi Kami
+            </Button>
+            {/* <a
               href="https://wa.me/6285772420855"
               target="_blank"
               rel="noopener noreferrer"
@@ -671,7 +669,7 @@ const Home: React.FC = () => {
                 alt="Perbaikan WC mampet dengan layanan cepat di Tangerang"
                 src={bgWa.src}
               />
-            </a>
+            </a> */}
           </div>
         </div>
       )}

@@ -68,14 +68,14 @@ const Navbar: React.FC = () => {
           {isContact ? (
             <a
               href="https://wa.me/6285772420855"
-              style={{ color: "white" }}
+              style={{ color: "black" }}
               target="_blank"
               rel="noopener noreferrer"
             >
               {item.title}
             </a>
           ) : (
-            <Link href={item.link} style={{ color: "white" }}>
+            <Link href={item.link} style={{ color: "black" }}>
               {item.title}
             </Link>
           )}
@@ -124,12 +124,19 @@ const Navbar: React.FC = () => {
       {/* Display Dropdown on small screens */}
       {isSmallScreen && (
         <Dropdown
-          overlay={<Menu selectedKeys={[current]}>{renderMenuItems()}</Menu>}
+          overlay={
+            <Menu
+              style={{ backgroundColor: "#F9F9F9" }}
+              selectedKeys={[current]}
+            >
+              {renderMenuItems()}
+            </Menu>
+          }
           trigger={["click"]}
           placement="bottomRight"
         >
           <MenuOutlined
-            style={{ color: "white" }}
+            style={{ color: "black" }}
             className={styles.menuIcon}
           />
         </Dropdown>

@@ -4,6 +4,8 @@
   margin-top: 20px; /* Atur jarak dari atas sesuai kebutuhan */
   margin-right: 20px; /* Atur jarak dari kanan sesuai kebutuhan */
   float: right; /* Gunakan float right untuk menempatkan ikon di kanan */
+  align-items: center;
+  justify-content: center;
 }
 
 .whatsapp-icon-link {

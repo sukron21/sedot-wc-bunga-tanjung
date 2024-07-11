@@ -303,12 +303,12 @@ const Home: React.FC = () => {
             }}
           >
             <div style={{ justifyContent: "center" }}>
-              <p style={{ margin: "0", paddingRight: "10px" }}>Use Client</p>
+              {/* <p style={{ margin: "0", paddingRight: "10px" }}>Use Client</p> */}
               {/* Add more relevant content for SEO */}
               <p style={{ margin: "0", paddingRight: "10px" }}>
                 Email: info@bungatanjung.com
-              </p>
-              <p style={{ margin: "0" }}>Phone: +62 812-4003-0238</p>
+              </p>{" "}
+              <p style={{ margin: "0" }}>Phone: +62 857-7242-0855</p>
             </div>
             <div style={{ marginTop: "10px" }}>
               <a href="/faq" style={{ color: "white", marginRight: "10px" }}>

@@ -645,6 +645,7 @@ const Home: React.FC = () => {
           </main>
           <div className={styles["whatsapp-icon-container"]}>
             <Button
+              onClick={handleWhatsAppClick}
               className={`${styles["whatsapp-icon-link"]} ${styles["fixed-icon"]}`}
               style={{
                 backgroundColor: "#2B59C3",

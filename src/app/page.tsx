@@ -28,8 +28,10 @@ import {
   ArrowRightOutlined,
   RightOutlined,
   LeftOutlined,
+  PhoneOutlined,
 } from "@ant-design/icons";
 import Link from "next/link";
+import Head from "next/head";
 
 const Home: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -99,6 +101,18 @@ const Home: React.FC = () => {
 
   return (
     <>
+      <Head>
+        <title>Sedot WC Tangerang | Layanan Profesional | Bunga Tanjung</title>
+        <meta
+          name="description"
+          content="Selamat datang di website kami. Layanan sedot WC profesional di Tangerang Raya. Kunjungi kami untuk solusi WC mampet dan WC penuh."
+        />
+        <meta
+          name="keywords"
+          content="sedot wc, sedot wc tangerang, wc mampet, layanan sedot wc, sedot wc profesional, layanan sedot wc tangerang"
+        />
+        <meta name="robots" content="index, follow" />
+      </Head>
       {isLoading ? (
         <div
           style={{
@@ -160,12 +174,10 @@ const Home: React.FC = () => {
                 }}
               />
             </div>
-
             {/* Navbar */}
             <Navbar />
             {/* Main Content */}
             {/* {bgIndex === 0 ? ( */}
-
             <main
               style={{
                 zIndex: 2,
@@ -268,9 +280,61 @@ const Home: React.FC = () => {
                 </Col>
               </Row>
             </main>
-            {/* ) : null} */}
           </div>
-
+          <div
+            style={{
+              color: "red",
+              zIndex: 20000,
+              backgroundColor: "white",
+              width: isMobile ? "100%" : isTablet ? "50%" : "50%",
+              marginTop: isMobile ? "-10px" : isTablet ? "-20px" : "-20px",
+              marginLeft: isMobile ? "0px" : isTablet ? "30px" : "30px",
+              display: "flex",
+              justifyContent: "center", // Menengahkan horizontal
+              alignItems: "center",
+            }}
+          >
+            <Card
+              style={{
+                backgroundColor: "#F9F9F9",
+                textAlign: isMobile ? "center" : "left",
+              }}
+            >
+              <Row>
+                <Col xs={24} sm={10}>
+                  <p>
+                    <b>Selamat datang di website kami</b>
+                  </p>
+                  <p style={{ fontSize: "10px" }}>
+                    https://sedot-wc-bunga-tanjung-tangerang.netlify.app/
+                  </p>
+                </Col>
+                <Col xs={24} sm={10}>
+                  <p
+                    style={{
+                      paddingTop: 10,
+                      paddingLeft: "10px",
+                      fontSize: "13px",
+                    }}
+                  >
+                    Layanan Sedot WC Tangerang Raya
+                  </p>
+                </Col>
+                <Col xs={24} sm={4}>
+                  <Button
+                    onClick={handleWhatsAppClick}
+                    style={{
+                      marginTop: 10,
+                      backgroundColor: "#253C78",
+                      height: "8vh",
+                    }}
+                  >
+                    <PhoneOutlined style={{ color: "white" }} />
+                  </Button>
+                </Col>
+              </Row>
+            </Card>
+          </div>
           {/* Main Content Section */}
           <main style={{ color: "black", paddingTop: "20px" }}>
             <div

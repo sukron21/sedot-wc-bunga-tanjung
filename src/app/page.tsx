@@ -101,18 +101,6 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <Head>
-        <title>Sedot WC Tangerang | Layanan Profesional | Bunga Tanjung</title>
-        <meta
-          name="description"
-          content="Selamat datang di website kami. Layanan sedot WC profesional di Tangerang Raya. Kunjungi kami untuk solusi WC mampet dan WC penuh."
-        />
-        <meta
-          name="keywords"
-          content="sedot wc, sedot wc tangerang, wc mampet, layanan sedot wc, sedot wc profesional, layanan sedot wc tangerang"
-        />
-        <meta name="robots" content="index, follow" />
-      </Head>
       {isLoading ? (
         <div
           style={{
@@ -617,7 +605,7 @@ const Home: React.FC = () => {
                   style={{ paddingTop: 20, paddingBottom: "30px" }}
                 >
                   <p>
-                    Jamina puas memberikan pelayanan terbaik tanpa biaya
+                    Jaminan puas memberikan pelayanan terbaik tanpa biaya
                     tersembunyi
                   </p>
                 </div>
